@@ -6,6 +6,7 @@ const ulEl = document.getElementById("ul-el");
 const deleteBtn = document.getElementById("delete-btn");
 const tabBtn = document.getElementById("tab-btn");
 
+//render saved urls
 function render(leads) {
     let lisItems = "";
     for (let i = 0; i < leads.length; i++) {
@@ -21,12 +22,13 @@ function render(leads) {
 
 const leadsFromLocalStorage = JSON.parse(localStorage.getItem("Leads"));
 
+//if there any data in local storage render data
 if (leadsFromLocalStorage) {
     myLeads = leadsFromLocalStorage;
     render(myLeads);
 }
 
-
+//get values from input area and save local storage
 inputBtn.addEventListener("click", function() {
     myLeads.push(inputEl.value);
 
@@ -37,6 +39,7 @@ inputBtn.addEventListener("click", function() {
     render(myLeads);
 });
 
+//get current active window & tab url.then store local storage
 tabBtn.addEventListener("click", function() {
     chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
         myLeads.push(tabs[0].url);
@@ -45,6 +48,7 @@ tabBtn.addEventListener("click", function() {
     });
 });
 
+//when click the delete all button delete all saved data
 deleteBtn.addEventListener("dblclick", function() {
     localStorage.clear();
     myLeads = [];

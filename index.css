@@ -22,13 +22,16 @@ button {
     padding: 10px 20px;
     border: none;
     font-weight: bold;
+    border-radius: 5px;
+    margin-right: 10px;
 }
 
 
 /* for delete button */
 
 #delete-btn {
-    border: 1px solid #5f9341;
+    /* border: 1px solid #c42626; */
+    background-color: #e92929;
     color: white;
 }
 
@@ -48,3 +51,10 @@ li {
 li a {
     color: #5f9341;
 }
+
+/* taransform button when hover */
+button:hover{
+    cursor: pointer;
+    transform: scale(1.15);
+    
+    }
